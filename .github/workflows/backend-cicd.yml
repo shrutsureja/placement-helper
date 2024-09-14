@@ -11,31 +11,31 @@ jobs:
     environment: production
 
     steps:
-    - name: Checkout
+    - name: Checkout Repository
       uses: actions/checkout@v4
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
-      with: 
+      with:
         node-version: '20'
-        
+
     - name: Install dependencies
       run: |
         cd backend-nest
         npm ci
-        
+
     - name: Run build
       run: |
         cd backend-nest
         npm run build
 
-    - name : creating a .env file
+    - name: Create .env file
       run: |
         cd backend-nest
         touch .env
         echo "${{ secrets.NODE_PROD_ENV }}" > .env
-        
-    - name: pm2 process
+
+    - name: Start the application with PM2
       run: |
         cd backend-nest
-        pm2 start ecosystem.config.js
+        pm2 start dist/main.js --name backend-node-prod --env production
