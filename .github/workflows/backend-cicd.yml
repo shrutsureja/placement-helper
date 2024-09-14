@@ -1,0 +1,41 @@
+name: Deploy to custom server
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: self-hosted
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with: 
+        node-version: '20'
+        
+    - name: Install dependencies
+      run: |
+        cd backend-nest
+        npm ci
+        
+    - name: Run build
+      run: |
+        cd backend-nest
+        npm run build
+
+    - name : creating a .env file
+      run: |
+        cd backend-nest
+        touch .env
+        echo "${{ secrets.NODE_PROD_ENV }}" > .env
+        
+    - name: pm2 process
+      run: |
+        cd backend-nest
+        pm2 start ecosystem.config.js
