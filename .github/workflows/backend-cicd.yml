@@ -3,6 +3,8 @@ name: Deploy to custom server
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'backend-nest/**'
 
 jobs:
   deploy:
