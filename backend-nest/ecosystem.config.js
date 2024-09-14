@@ -1,11 +1,11 @@
 {
-  apps : [
+  apps: [
     {
-      name      : "backend-node-prod",
-      namespace : "node prod",
-      script    : "npm run start:prod",
+      name: "backend-node-prod",
+      namespace: "node prod",
+      script: "npm",
+      args: "run start:prod",
       interpreter: "none",
-      args: ""
     }
   ]
 }
