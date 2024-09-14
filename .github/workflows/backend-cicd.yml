@@ -5,6 +5,7 @@ on:
     branches: [ "main" ]
     paths:
       - 'backend-nest/**'
+      - 'backend-python/**'
 
 jobs:
   deploy:
@@ -40,4 +41,21 @@ jobs:
     - name: Start the application with PM2
       run: |
         cd backend-nest
+        pm2 restart ecosystem.config.js
+
+    - name: Install dependencies
+      run: |
+        cd backend-python
+        python3 -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name : Env file 
+      run: | 
+        cd backend-python
+        touch .env
+        echo "${{ secrets.PY_PROD_ENV }}" > .env
+
+    - name : pm2 env
+      run: | 
+        cd backend-python
         pm2 restart ecosystem.config.js
