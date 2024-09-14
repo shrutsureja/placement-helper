@@ -3,9 +3,9 @@ name: Deploy to custom server
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - 'backend-nest/**'
-      - 'backend-python/**'
+    # paths:
+    #   - 'backend-nest/**'
+    #   - 'backend-python/**'
 
 jobs:
   deploy:
