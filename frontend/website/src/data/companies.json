@@ -1,0 +1,72 @@
+[
+    {
+        "companyName": "TechInnovate Solutions",
+        "description": "A leading software development company specializing in AI, web, and mobile applications.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "Plot No. 22, IT Park, Kalavad Road, Rajkot, Gujarat, 360005"
+    },
+    {
+        "companyName": "CodeCraft Technologies",
+        "description": "Providing innovative software solutions for businesses, with expertise in e-commerce and cloud-based applications.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "301, Silver Heights, Dr. Yagnik Road, Rajkot, Gujarat, 360002"
+    },
+    {
+        "companyName": "PixelWeb IT Services",
+        "description": "A full-service web design and development agency offering cutting-edge solutions for digital businesses.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "Shop No. 8, Parklane Complex, Gondal Road, Rajkot, Gujarat, 360004"
+    },
+    {
+        "companyName": "Infotech Systems Pvt. Ltd.",
+        "description": "Expert in ERP solutions and enterprise application development for large organizations.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "403, Star Avenue, Sadhu Vasvani Road, Rajkot, Gujarat, 360007"
+    },
+    {
+        "companyName": "SoftPro IT Solutions",
+        "description": "Delivering custom software development, testing, and consulting services for SMEs and startups.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "202, City Center, University Road, Rajkot, Gujarat, 360006"
+    },
+    {
+        "companyName": "SkyNet Infosystems",
+        "description": "Providing world-class cloud infrastructure and cybersecurity solutions to global enterprises.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "B-105, Silicon Towers, Gondal Road, Rajkot, Gujarat, 360003"
+    },
+    {
+        "companyName": "NextGen IT Hub",
+        "description": "Offering cutting-edge blockchain and AI-driven solutions to transform business processes.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "Plot No. 15, Green Avenue, Nana Mava Road, Rajkot, Gujarat, 360005"
+    },
+    {
+        "companyName": "FutureTech Innovations",
+        "description": "A forward-thinking firm providing AR/VR and IoT solutions for industries worldwide.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "56, Crystal Plaza, Tagore Road, Rajkot, Gujarat, 360001"
+    },
+    {
+        "companyName": "PrimeSoft Digital Solutions",
+        "description": "Leading provider of digital transformation services, specializing in AI and data analytics.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "7th Floor, Unity Tower, Race Course Road, Rajkot, Gujarat, 360001"
+    },
+    {
+        "companyName": "TechnoSphere India",
+        "description": "Focused on mobile app development, UI/UX design, and cloud-based applications for startups.",
+        "city": "Rajkot",
+        "state": "Gujarat",
+        "address": "Unit No. 402, Sunrise Plaza, Jagnath Plot, Rajkot, Gujarat, 360002"
+    }
+]
