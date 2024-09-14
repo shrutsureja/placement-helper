@@ -41,7 +41,7 @@ function CompanyDetailsPage({ params }: { params: { id: string } }) {
             </div>
             <div className="flex flex-col gap-2">
                 {Array.isArray(questions) && questions.length > 0 && questions.map((_, i) => (
-                    <Link href={`/company/${companyId}/questions/${i}`} className="card shadow-md" key={i}>
+                    <Link href={`/company/${companyId}/questions/${i}`} className={`card shadow-md ${i % 2 === 0 ? "bg-black/20" : "bg-inherit"}`} key={i}>
                         <div className="card-body">
                             Interview questions shared by Aryan Joshi
                         </div>

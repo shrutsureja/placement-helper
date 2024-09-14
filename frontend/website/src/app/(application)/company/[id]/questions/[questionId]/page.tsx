@@ -28,7 +28,7 @@ const QuestionsPage = ({ params }: { params: { id: string, questionId: string } 
 
     return (
         <div className="flex flex-col gap-4 my-2">
-            <h1 className="text-2xl font-semibold">Origianl Questions:</h1>
+            <h1 className="text-2xl font-semibold">Original Questions:</h1>
             <pre>{originalQuestions}</pre>
             <h1 className="text-2xl font-semibold">Formatted Questions:</h1>
             {Object.keys(questions).map((title) => (
