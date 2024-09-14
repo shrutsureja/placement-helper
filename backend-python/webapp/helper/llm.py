@@ -1,18 +1,32 @@
-from webapp.service import Config
+from collections import defaultdict
+from webapp.service import Config, logger
 import json
-import random
 
 LIST_OF_KEYS =(Config.API_KEY).split(',')
 
 
+def format_string(input_string):
+    try: 
+        categorized_questions = defaultdict(list)
+        result = json_controlled_generations(input_string=input_string)
+
+        for item in result.get('interview_data'):
+            category = item["type_of_question"].capitalize()  # Capitalize for consistency
+            categorized_questions[category].append(item["questions"])
+        return categorized_questions
+    except:
+        logger.debug("Got some error trying to recall.")
+        return format_string(input_string)
+        
+
 def json_controlled_generations(input_string):
     import google.generativeai as genai
-    genai.configure(api_key=random.choice(LIST_OF_KEYS))
+    genai.configure(api_key=Config.API_KEY)
 
     import typing_extensions as typing
     class InterviewQuestionSchema(typing.TypedDict):
         type_of_question: str  # Description: Type or stage of the interview (e.g., Aptitude Test, Technical Interview, HR Interview)
-        questions: typing.List[str]   # Description: List of questions asked during this particular stage
+        questions: str   # Description: Question asked during this particular stage
 
     class InterviewSchema(typing.TypedDict):
         interview_data: typing.List[InterviewQuestionSchema]  # Description: A list of interview stages and their respective questions
