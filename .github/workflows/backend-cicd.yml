@@ -22,7 +22,7 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Install dependencies
+    - name: Install nest dependencies
       run: |
         cd backend-nest
         npm ci
@@ -43,11 +43,11 @@ jobs:
         cd backend-nest
         pm2 restart ecosystem.config.js
 
-    - name: Install dependencies
-      run: |
-        cd backend-python
-        python3 -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    # - name: Install python dependencies
+    #   run: |
+    #     cd backend-python
+    #     python3 -m pip install --upgrade pip
+    #     if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
     - name : Env file 
       run: | 
