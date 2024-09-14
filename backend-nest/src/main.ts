@@ -4,8 +4,12 @@ import { Logger as Pino } from 'nestjs-pino';
 import { ConfigService } from '@nestjs/config';
 import { ENV_NAMESPACES } from './config';
 import * as crypto from 'crypto';
-import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
+import {
+  FastifyAdapter,
+  NestFastifyApplication,
+} from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
+import * as fastifyCors from '@fastify/cors';
 
 const logger = new Logger('Main');
 async function bootstrap() {
@@ -19,6 +23,11 @@ async function bootstrap() {
       rawBody: true,
     },
   );
+
+  app.register(fastifyCors, {
+    origin: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  });
   app.useLogger(app.get(Pino));
 
   const configService = app.get(ConfigService);
