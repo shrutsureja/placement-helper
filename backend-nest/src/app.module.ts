@@ -8,6 +8,11 @@ import serverConfig from './config/config-list/server.config';
 import loggerConfig from './config/config-list/logger.config';
 import { MongooseModule } from '@nestjs/mongoose';
 import databaseConfig from './config/config-list/database.config';
+import { AdminModule } from './components/admin/admin.module';
+import { UserModule } from './components/user/user.module';
+import { CollegeModule } from './components/college/college.module';
+import { SuperAdminModule } from './components/super-admin/super-admin.module';
+import { ReviewsModule } from './components/reviews/reviews.module';
 
 @Module({
   imports: [
@@ -20,7 +25,9 @@ import databaseConfig from './config/config-list/database.config';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        const loggerConfigurations = configService.get(`${ENV_NAMESPACES.LOGGER}.pinoHttp`);
+        const loggerConfigurations = configService.get(
+          `${ENV_NAMESPACES.LOGGER}.pinoHttp`,
+        );
         return {
           pinoHttp: loggerConfigurations,
         };
@@ -33,6 +40,11 @@ import databaseConfig from './config/config-list/database.config';
       }),
       inject: [ConfigService],
     }),
+    AdminModule,
+    UserModule,
+    CollegeModule,
+    SuperAdminModule,
+    ReviewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
