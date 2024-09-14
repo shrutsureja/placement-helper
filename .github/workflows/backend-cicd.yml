@@ -40,4 +40,4 @@ jobs:
     - name: Start the application with PM2
       run: |
         cd backend-nest
-        pm2 start dist/main.js --name backend-node-prod --env production
+        pm2 restart ecosystem.config.js
