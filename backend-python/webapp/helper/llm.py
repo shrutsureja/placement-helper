@@ -17,6 +17,23 @@ def format_string(input_string):
     except:
         logger.debug("Got some error trying to recall.")
         return format_string(input_string)
+
+
+from llama_index.core.base.llms.types import ChatMessage
+from llama_index.llms.gemini import Gemini
+
+
+def create_answer(query):
+    try: 
+        prompt = "Act as a computer science expert and help users preparing for technical interviews. Provide clear, concise answers and focus on key concepts, problem-solving strategies, and common interview questions. Offer tips, explain reasoning, and where relevant, provide code examples or frameworks for solving problems effectively."
+        gemini_model = Gemini(model="models/gemini-1.5-pro", api_key=Config.API_KEY)
+        from llama_index.core.chat_engine import SimpleChatEngine
+        engine = SimpleChatEngine.from_defaults(llm=gemini_model, system_prompt=prompt)
+        query = engine.chat(query)
+        return query
+    except:
+        logger.debug("Got some error trying to recall.")
+        return format_string(query)
         
 
 def json_controlled_generations(input_string):
