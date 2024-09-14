@@ -40,5 +40,6 @@ jobs:
     - name: Start the application with PM2
       run: |
         cd backend-nest
+        npm install pm2 -g
         pm2 status
         pm2 restart ecosystem.config.js
