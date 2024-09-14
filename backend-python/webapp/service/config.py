@@ -8,11 +8,13 @@ dotenv.load_dotenv(".env", override=True)
 class Config:
     FLASK_PORT = os.getenv("FLASK_PORT")
     PYTHON_ENV = os.getenv("PYTHON_ENV")
+    API_KEY = os.getenv("API_KEY")
 
     def __init__(self):
         required_env_vars = [
             "PYTHON_ENV",
             "FLASK_PORT",
+            "API_KEY"
         ]
 
         missing_vars = [
