@@ -1,0 +1,44 @@
+name: Deploy to custom server
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'frontend/website/**'
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: self-hosted
+    environment: production
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Creating the frontend .env
+      run : |
+          cd frontend/website
+          touch .env
+          echo "${{ secrets.FRONTEND }}" > .env
+      
+    - name: Installing the dependencies
+      run : |
+        cd frontend/website
+        npm ci
+
+    - name: Run build frontend website
+      run: |
+        cd frontend/website
+        npm run build
+    
+    - name: pm2 for frontend
+      run: |
+        cd frontend/website
+        pm2 status
+        pm2 restart ecosystem.config.js
