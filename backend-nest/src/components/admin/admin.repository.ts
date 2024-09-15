@@ -1,20 +1,12 @@
 import {
-  HttpStatus,
   Injectable,
   InternalServerErrorException,
-  NotFoundException,
   Logger,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import {
-  FilterQuery,
-  Model,
-  PipelineStage,
-  ProjectionType,
-  UpdateQuery,
-} from 'mongoose';
-import { AdminDocument } from './admin.schema';
+import { FilterQuery, Model } from 'mongoose';
 import { DBCollectionNameTokens } from 'src/config';
+import { AdminDocument } from './admin.schema';
 
 const COMMON_ERROR_MESSAGE = 'Oops something went wrong';
 

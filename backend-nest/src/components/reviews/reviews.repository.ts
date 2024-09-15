@@ -1,19 +1,11 @@
 import {
-  HttpStatus,
   Injectable,
   InternalServerErrorException,
-  NotFoundException,
   Logger,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { FilterQuery, Model, UpdateQuery } from 'mongoose';
 import { DBCollectionNameTokens } from 'src/config';
-import {
-  FilterQuery,
-  Model,
-  PipelineStage,
-  ProjectionType,
-  UpdateQuery,
-} from 'mongoose';
 import { Reviews, ReviewsDocument } from './reviews.schema';
 
 const COMMON_ERROR_MESSAGE = 'Oops something went wrong';
@@ -27,10 +19,8 @@ export class ReviewRepository {
 
   async create(review: Reviews): Promise<ReviewsDocument> {
     try {
-      console.log(review);
       return await this.reviewModel.create(review);
     } catch (err) {
-      console.log(err);
       this.logger.error({ err }, 'Error while creating review');
       throw new InternalServerErrorException(COMMON_ERROR_MESSAGE);
     }

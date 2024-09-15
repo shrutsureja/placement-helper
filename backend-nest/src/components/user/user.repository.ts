@@ -1,18 +1,10 @@
 import {
-  HttpStatus,
   Injectable,
   InternalServerErrorException,
-  NotFoundException,
   Logger,
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import {
-  FilterQuery,
-  Model,
-  PipelineStage,
-  ProjectionType,
-  UpdateQuery,
-} from 'mongoose';
+import { FilterQuery, Model } from 'mongoose';
 import { DBCollectionNameTokens } from 'src/config';
 import { UserDocument } from './user.schema';
 

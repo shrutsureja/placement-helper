@@ -31,8 +31,6 @@ export class ReviewsService {
 
       const responseData = convertArrayToObject(output);
 
-      console.log(responseData);
-
       const reviews = await this.reviewsRepository.create({
         review: createReviewDto.review,
         companyId : createReviewDto.companyId,

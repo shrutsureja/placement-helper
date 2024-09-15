@@ -28,9 +28,14 @@ async function bootstrap() {
     origin: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   });
-  app.useLogger(app.get(Pino));
 
   const configService = app.get(ConfigService);
+  app.register(require('fastify-auth0-verify'), {
+    domain: configService.get(`${ENV_NAMESPACES.SERVER}.domain`),
+    secret: configService.get(`${ENV_NAMESPACES.SERVER}.secret`),
+    audience: configService.get(`${ENV_NAMESPACES.SERVER}.audience`),
+  });
+  app.useLogger(app.get(Pino));
 
   app.useGlobalPipes(new ValidationPipe());
 
