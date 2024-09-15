@@ -1,8 +1,17 @@
 import CompanyList from "@/components/ui/CompanyList";
-import companies from "@/data/companies.json"
+import Axios from "@/config/axios";
 
+const fetchCompanies = async () => {
+    try {
+        const response = await Axios.get("/company");
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-const CompaniesPage = () => {
+const CompaniesPage = async () => {
+    const companies = await fetchCompanies();
     return (
         <div>
             <CompanyList companies={companies} />

@@ -1,37 +1,37 @@
-"use client"
-import { useEffect, useState } from 'react'
-import companies from "@/data/companies.json"
 import Link from 'next/link';
-import { getDataFromLocalStorage } from '@/utils';
+import Axios from '@/config/axios';
 
-type QuestionData = {
-    [key: string]: string[];
-};
+const fetchCompanyDetails = async (id: string) => {
+    try {
+        const response = await Axios.get(`/company/${id}`);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-type QuestionsList = { companyId: string, formattedQuestions: QuestionData };
+const fetchCompanyQuestions = async (id: string) => {
+    try {
+        const response = await Axios.get(`/reviews/company/${id}`);
+        console.log(response);
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-function CompanyDetailsPage({ params }: { params: { id: string } }) {
+async function CompanyDetailsPage({ params }: { params: { id: string } }) {
     const companyId = params.id;
-    const company = companies[Number(companyId)];
-    const [questions, setQuestions] = useState<QuestionsList[] | null>(null);
-
-    useEffect(() => {
-        const questions = getDataFromLocalStorage("questions");
-        const parsedQuestions: Array<QuestionsList> = JSON.parse(questions!);
-        if (Array.isArray(parsedQuestions) && parsedQuestions.length > 0) {
-            const questionsByCompany = parsedQuestions.filter(que => que?.companyId === companyId);
-            setQuestions(questionsByCompany);
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const company = await fetchCompanyDetails(companyId);
+    const questions = await fetchCompanyQuestions(companyId);
 
     return (
         <div className="flex flex-col gap-2">
             <div className='my-2'>
-                <h1 className='text-2xl font-semibold'>{company.companyName}</h1>
-                <p className='text-lg'>{company.description}</p>
-                <p>{company.address}</p>
-                <p className='opacity-60'>{company.city} - {company.state}</p>
+                <h1 className='text-2xl font-semibold'>{company?.companyName}</h1>
+                <p className='text-lg'>{company?.description}</p>
+                <p>{company?.address}</p>
+                <p className='opacity-60'>{company?.city} - {company?.state}</p>
             </div>
             <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center bg-black/10 p-2">
@@ -40,11 +40,11 @@ function CompanyDetailsPage({ params }: { params: { id: string } }) {
                 </div>
             </div>
             <div className="flex flex-col gap-2">
-                {Array.isArray(questions) && questions.length > 0 && questions.map((_, i) => (
-                    <Link href={`/company/${companyId}/questions/${i}`} className={`card shadow-md ${i % 2 === 0 ? "bg-black/20" : "bg-inherit"}`} key={i}>
-                        <div className="card-body">
-                            Interview questions shared by Aryan Joshi
-                        </div>
+                {Array.isArray(questions) && questions.length > 0 && questions.map((question, i) => (
+                    <Link href={`/company/${companyId}/questions/${question?._id}`} className={`card shadow-md ${i % 2 === 0 ? "bg-black/10" : "bg-inherit"}`} key={i}>
+                        <p className="card-body truncate w-2/3">
+                            {question?.review}
+                        </p>
                     </Link>
                 ))}
             </div>

@@ -1,3 +1,4 @@
+import Header from "@/components/layout/Header";
 import NavigationDrawer from "@/components/layout/NavigationDrawer";
 import { Fragment } from "react";
 
@@ -9,6 +10,7 @@ export default function ApplicationLayout({
     return (
         <Fragment>
             <NavigationDrawer>
+                <Header />
                 {children}
             </NavigationDrawer>
         </Fragment>

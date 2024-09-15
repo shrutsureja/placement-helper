@@ -21,7 +21,7 @@ const LoginForm = () => {
     return (
         <div className="card shadow-xl">
             <div className="card-body items-center text-centers">
-                <h1 className="card-title">Placement Helper</h1>
+                <h1 className="card-title">PlacementPilot</h1>
                 <p className="text-xs">Please enter your credentials to login</p>
                 <form onSubmit={handleSubmit(handleOnSubmit)} className="flex flex-col gap-4">
                     <div className="form-control">
