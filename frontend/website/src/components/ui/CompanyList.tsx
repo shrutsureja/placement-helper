@@ -5,7 +5,7 @@ import Link from "next/link";
 const CompanyList = ({ companies }: { companies: any }) => {
     return (
         <div className="flex flex-col gap-4 my-2">
-            {companies.map((c: any, i: number) => (
+            {Array.isArray(companies) && companies.length > 0 && companies.map((c: any, i: number) => (
                 <Link href={`/company/${c?._id}`} key={i} className={`card shadow-md ${i % 2 == 0 ? "bg-black/10" : `bg-inherit`}`}>
                     <div className="card-body">
                         <h3 className="text-lg">{c.companyName}</h3>
