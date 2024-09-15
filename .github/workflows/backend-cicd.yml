@@ -65,4 +65,4 @@ jobs:
         cd frontend/website
         npm install pm2 -g
         pm2 status
-        pm2 restart "npm start"
+        pm2 restart ecosystem.config.js
