@@ -10,6 +10,7 @@ import {
 } from '@nestjs/platform-fastify';
 import { AppModule } from './app.module';
 import * as fastifyCors from '@fastify/cors';
+import fastifyCookie from '@fastify/cookie';
 
 const logger = new Logger('Main');
 async function bootstrap() {
@@ -28,6 +29,8 @@ async function bootstrap() {
     origin: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   });
+
+  app.register(fastifyCookie);
 
   const configService = app.get(ConfigService);
   app.register(require('fastify-auth0-verify'), {

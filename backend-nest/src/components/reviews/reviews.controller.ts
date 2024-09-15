@@ -1,7 +1,9 @@
-import { Controller, Get, Param, Post, Body, Logger, Res } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, Logger, Res, UseGuards } from '@nestjs/common';
 import { ReviewsService } from './reviews.service';
+import { JwtAuthGuard } from '../../common/authentication/jwt-auth.guard';
 
 @Controller('reviews')
+@UseGuards(JwtAuthGuard)
 export class ReviewsController {
   private readonly logger = new Logger(ReviewsController.name);
   constructor(private readonly reviewsService: ReviewsService) {}
@@ -20,7 +22,7 @@ export class ReviewsController {
   }
 
   @Get('/company/:companyId')
-  async getReviewByCompanyId(@Param('companyId') companyId){
+  async getReviewByCompanyId(@Param('companyId') companyId) {
     this.logger.log('request received for getting a review by company id');
     return await this.reviewsService.getReviewByCompanyId(companyId);
   }
