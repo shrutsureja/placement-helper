@@ -35,6 +35,7 @@ export class ReviewsService {
 
       const reviews = await this.reviewsRepository.create({
         review: createReviewDto.review,
+        companyId : createReviewDto.companyId,
         llmAnswer: responseData,
       });
 
