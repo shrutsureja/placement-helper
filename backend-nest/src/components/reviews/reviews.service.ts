@@ -43,4 +43,20 @@ export class ReviewsService {
       this.logger.log({ err }, 'Error while creating review');
     }
   }
+
+  async getReviewById(reviewId: string) {
+    try {
+      return await this.reviewsRepository.findById(reviewId);
+    } catch (err) {
+      this.logger.log({ err }, 'Error while creating review');
+    }
+  }
+
+  async getReviewByCompanyId(companyId) {
+    try {
+      return await this.reviewsRepository.findByCompanyId(companyId);
+    } catch (err) {
+      this.logger.log({ err }, 'Error while creating review');
+    }
+  }
 }

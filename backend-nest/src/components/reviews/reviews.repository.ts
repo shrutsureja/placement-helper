@@ -49,4 +49,23 @@ export class ReviewRepository {
       throw new InternalServerErrorException(COMMON_ERROR_MESSAGE);
     }
   }
+
+  async findById(reviewId: string): Promise<ReviewsDocument> {
+    try {
+      return await this.reviewModel.findById(reviewId);
+    } catch (err) {
+      this.logger.error({ err }, 'Error while fetching review by id');
+      throw new InternalServerErrorException(COMMON_ERROR_MESSAGE);
+    }
+  }
+
+  async findByCompanyId(companyId: string): Promise<ReviewsDocument[]> {
+    try {
+      return await this.reviewModel.find({ companyId });
+    } catch (err) {
+      this.logger.error({ err }, 'Error while fetching reviews by company id');
+      throw new InternalServerErrorException(COMMON_ERROR_MESSAGE);
+    }
+  }
+
 }
