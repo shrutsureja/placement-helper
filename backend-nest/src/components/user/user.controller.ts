@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Post, Query, Res, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Query,
+  Res,
+  UseGuards,
+} from '@nestjs/common';
 import { CreateUserDto } from './dtos/login-signup.dto';
 import { UserService } from './user.service';
 import { JwtAuthGuard } from 'src/common/authentication/jwt-auth.guard';
@@ -24,7 +32,6 @@ export class UserController {
     return await this.userService.findAll(query);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get('checkToken')
   async checkAccess() {
     return true;

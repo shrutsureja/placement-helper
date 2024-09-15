@@ -13,15 +13,12 @@ export class CompanyController {
     return await this.companyService.create(createCompanyDto);
   }
 
-  @Get()
-  @UseGuards(JwtAuthGuard)
-  async get() {
+  @Get()  async get() {
     this.logger.log('request received for getting companies');
     return await this.companyService.getAllCompanyDetails();
   }
 
   @Get(':id')
-  @UseGuards(JwtAuthGuard)
   async getCompanyId(@Param('id') id: string) {
     this.logger.log('request received for getting company by id');
     return await this.companyService.getCompanyById(id);
