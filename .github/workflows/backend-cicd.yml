@@ -60,7 +60,8 @@ jobs:
         touch .env
         echo "${{ secrets.FRONTEND }}" > .env
     
-    - name: |
+    - name: pm2 for frontend
+      run: |
         cd frontend/website
         npm install pm2 -g
         pm2 status
