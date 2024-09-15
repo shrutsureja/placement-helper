@@ -10,9 +10,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import databaseConfig from './config/config-list/database.config';
 import { AdminModule } from './components/admin/admin.module';
 import { UserModule } from './components/user/user.module';
-import { CollegeModule } from './components/college/college.module';
-import { SuperAdminModule } from './components/super-admin/super-admin.module';
 import { ReviewsModule } from './components/reviews/reviews.module';
+import { AuthModule } from './common/authentication/auth.module';
 import { CompanyModule } from './components/company/company.module';
 
 @Module({
@@ -41,10 +40,9 @@ import { CompanyModule } from './components/company/company.module';
       }),
       inject: [ConfigService],
     }),
+    AuthModule,
     AdminModule,
     UserModule,
-    CollegeModule,
-    SuperAdminModule,
     ReviewsModule,
     CompanyModule,
   ],

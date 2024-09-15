@@ -1,11 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import {
-  HydratedDocument,
-  ObjectId,
-  Schema as MongoSchema,
-  Types,
-} from 'mongoose';
-import { DBCollectionNameTokens } from 'src/config';
+import { HydratedDocument, Schema as MongoSchema } from 'mongoose';
 import { Roles } from 'src/config/tokens/roles.token';
 
 @Schema({ timestamps: true })

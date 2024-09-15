@@ -1,15 +1,4 @@
-import {
-  Body,
-  Controller,
-  Get,
-  HttpStatus,
-  Logger,
-  Put,
-  Req,
-  Res,
-  UseGuards,
-} from '@nestjs/common';
-import { FastifyReply } from 'fastify';
+import { Controller, Logger } from '@nestjs/common';
 import { AdminService } from './admin.service';
 
 @Controller()
