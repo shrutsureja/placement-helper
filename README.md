@@ -99,4 +99,8 @@ cd placement-helper
 
 ## Contact
 
-For any questions or feedback, please reach out to [shrutsureja.code@gmail.com](mailto:shrutsureja.code@gmail.com).
+For any questions or feedback, please reach out to us:
+- [shrutsureja.code@gmail.com](mailto:shrutsureja.code@gmail.com)
+- [acct.aryan@gmail.com](mailto:acct.aryan@gmail.com)
+- [advadoliya1512@gmail.com](mailto:advadoliya1512@gmail.com)
+- [chandpa.ashish007@gmail.com](mailto:chandpa.ashish007@gmail.com).
