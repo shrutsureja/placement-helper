@@ -13,6 +13,7 @@ import { UserModule } from './components/user/user.module';
 import { CollegeModule } from './components/college/college.module';
 import { SuperAdminModule } from './components/super-admin/super-admin.module';
 import { ReviewsModule } from './components/reviews/reviews.module';
+import { CompanyModule } from './components/company/company.module';
 
 @Module({
   imports: [
@@ -45,6 +46,7 @@ import { ReviewsModule } from './components/reviews/reviews.module';
     CollegeModule,
     SuperAdminModule,
     ReviewsModule,
+    CompanyModule,
   ],
   controllers: [AppController],
   providers: [AppService],

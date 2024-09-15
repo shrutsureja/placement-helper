@@ -3,4 +3,5 @@ export enum DBCollectionNameTokens {
   ADMIN = 'admin',
   COLLEGE = 'college',
   REVIEW = 'review',
+  COMPANY = 'company',
 }
