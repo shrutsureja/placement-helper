@@ -15,17 +15,28 @@ export class ReviewsService {
   async create(createReviewDto) {
     try {
       const url = `${this.serverConfigurations.llmBaseURL}/llm/format`;
-      console.time('LLM');
       const response = await axios.post(url, {
-        input: createReviewDto,
+        input: createReviewDto.review,
       });
-      console.timeEnd('LLM');
 
-      const output = response.data;
+      const output = response.data.data.data;
+
+      const convertArrayToObject = (array) => {
+        return array.reduce((acc, item) => {
+          const [key, value] = Object.entries(item)[0]; // Extract key-value pair from the single object
+          acc[key] = value; // Add it to the accumulator object
+          return acc;
+        }, {});
+      };
+
+      const responseData = convertArrayToObject(output);
+
+      console.log(responseData);
 
       const reviews = await this.reviewsRepository.create({
-        review: createReviewDto,
-        llmAnswer: output,
+        review: createReviewDto.review,
+        companyId : createReviewDto.companyId,
+        llmAnswer: responseData,
       });
 
       return reviews;
@@ -34,15 +45,19 @@ export class ReviewsService {
     }
   }
 
-  async getAnswer(question) {
-    const url = `${this.serverConfigurations.llmBaseURL}/llm`;
-    console.time('LLM');
-    const response = await axios.post(url, {
-      input: question.input,
-    });
-    console.timeEnd('LLM');
+  async getReviewById(reviewId: string) {
+    try {
+      return await this.reviewsRepository.findById(reviewId);
+    } catch (err) {
+      this.logger.log({ err }, 'Error while creating review');
+    }
+  }
 
-    const output = response.data;
-    return output;
+  async getReviewByCompanyId(companyId) {
+    try {
+      return await this.reviewsRepository.findByCompanyId(companyId);
+    } catch (err) {
+      this.logger.log({ err }, 'Error while creating review');
+    }
   }
 }
