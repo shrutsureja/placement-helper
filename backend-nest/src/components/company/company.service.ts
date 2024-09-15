@@ -23,7 +23,7 @@ export class CompanyService {
 
   async getAllCompanyDetails() {
     try {
-      return await this.companyModel.find();
+      return await this.companyModel.find().sort({ updatedAt: -1 });
     } catch (err) {
       this.logger.log({ err }, 'Error while creating review');
     }
