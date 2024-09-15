@@ -1,5 +1,6 @@
 import Header from "@/components/layout/Header";
 import Container from "@/components/layout/Container";
+import { Fragment } from "react";
 
 export default function ApplicationLayout({
     children,
@@ -7,9 +8,11 @@ export default function ApplicationLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <Container>
+        <Fragment>
             <Header />
-            {children}
-        </Container>
+            <Container>
+                {children}
+            </Container>
+        </Fragment>
     );
 }

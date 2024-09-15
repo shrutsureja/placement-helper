@@ -8,7 +8,7 @@ const CompanyList = ({ companies }: { companies: CompanyListType }) => {
     return (
         <div className="flex flex-col gap-4 my-2">
             {companies.map((c, i) => (
-                <Link href={`/company/${i}`} key={i} className={`card shadow-md ${i % 2 == 0 ? "bg-black/20" : `bg-inherit`}`}>
+                <Link href={`/company/${i}`} key={i} className={`card shadow-md ${i % 2 == 0 ? "bg-black/10" : `bg-inherit`}`}>
                     <div className="card-body">
                         <h3 className="text-lg">{c.companyName}</h3>
                         <p>{c.description}</p>
