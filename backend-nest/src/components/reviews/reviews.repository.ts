@@ -61,7 +61,7 @@ export class ReviewRepository {
 
   async findByCompanyId(companyId: string): Promise<ReviewsDocument[]> {
     try {
-      return await this.reviewModel.find({ companyId });
+      return await this.reviewModel.find({ companyId }).sort({ updatedAt: -1 });
     } catch (err) {
       this.logger.error({ err }, 'Error while fetching reviews by company id');
       throw new InternalServerErrorException(COMMON_ERROR_MESSAGE);
