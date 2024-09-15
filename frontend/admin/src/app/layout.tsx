@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Placement Helper",
+  title: "PlacementPilot",
   description: "A quick interview question's handbook for college students before placement",
 };
 

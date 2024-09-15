@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form"
 
 type Inputs = {
@@ -8,7 +9,7 @@ type Inputs = {
 }
 
 const LoginForm = () => {
-
+    const router = useRouter();
     const {
         register,
         handleSubmit,
@@ -17,12 +18,13 @@ const LoginForm = () => {
 
     const handleOnSubmit: SubmitHandler<Inputs> = (data) => {
         console.log(data, "FORM DATA");
+        router.push("/");
     }
 
     return (
         <div className="card shadow-xl">
             <div className="card-body items-center text-centers">
-                <h1 className="card-title">Placement Helper - Admin</h1>
+                <h1 className="card-title">PlacementPilot - Admin</h1>
                 <p className="text-xs">Please enter your credentials to login</p>
                 <form onSubmit={handleSubmit(handleOnSubmit)} className="flex flex-col gap-4">
                     <div className="form-control">
@@ -57,7 +59,7 @@ const LoginForm = () => {
                         </div>
                         {errors.password && <span className="label label-text-alt text-red-500 pt-1 px-0">Password is required!</span>}
                     </div>
-                    <button className="btn btn-sm btn-success text-white">Login</button>
+                    <button type="submit" className="btn btn-sm btn-success text-white">Login</button>
                 </form>
             </div>
         </div>
