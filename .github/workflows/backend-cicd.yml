@@ -43,7 +43,13 @@ jobs:
         npm install pm2 -g
         pm2 status
         pm2 restart ecosystem.config.js
-    
+        
+    - name: Creating the frontend .env
+      run : |
+          cd frontend/website
+          touch .env
+          echo "${{ secrets.FRONTEND }}" > .env
+      
     - name: Installing the dependencies
       run : |
         cd frontend/website
@@ -53,12 +59,6 @@ jobs:
       run: |
         cd frontend/website
         npm run build
-        
-    - name: Creating the frontend .env
-      run : |
-        cd frontend/website
-        touch .env
-        echo "${{ secrets.FRONTEND }}" > .env
     
     - name: pm2 for frontend
       run: |
