@@ -12,9 +12,11 @@ const fetchCompanyDetails = async (id: string) => {
 
 const fetchCompanyQuestions = async (id: string) => {
     try {
-        const response = await Axios.get(`/reviews/company/${id}`);
-        console.log(response);
-        return response.data;
+        // const response = await Axios.get(`/reviews/company/${id}`);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const response: any = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/reviews/company/${id}`, { cache: 'no-store' });
+        const resJson = await response.json();
+        return resJson;
     } catch (error) {
         console.log(error);
     }
