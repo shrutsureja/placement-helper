@@ -21,7 +21,7 @@ function InterviewQuestionsAddPage({ params }: { params: { id: string } }) {
             const dataObj = {
                 companyId: companyId,
                 originalQuestions: questions,
-                formattedQuestion: response.data.llmAnswer.data
+                formattedQuestion: response.data.llmAnswer
             }
             const questionList = getDataFromLocalStorage("questions");
             const parsedQuestionList: Array<unknown> = JSON.parse(questionList!);
@@ -41,12 +41,12 @@ function InterviewQuestionsAddPage({ params }: { params: { id: string } }) {
 
     return (
         <div className="flex flex-col gap-2 my-2">
-            <h1 className='text-xl font-semibold'>Add Interview Questions</h1>
+            <h1 className='text-xl font-semibold '>Add Interview Questions</h1>
             <p>Share {company.companyName} interview questions with other students.</p>
             <textarea rows={5} className="textarea textarea-bordered" placeholder="Questions" value={questions} onChange={e => setQuestions(e.target.value)} ></textarea>
             <div className="flex justify-end gap-2">
-                <Link href={`/company/${companyId}`} className="btn btn-outline btn-sm">Cancel</Link>
-                <button onClick={handleSubmit} className="btn btn-outline btn-success btn-sm">
+                <Link href={`/company/${companyId}`} className="btn btn-outline btn-sm btn-wide">Cancel</Link>
+                <button onClick={handleSubmit} className="btn btn-outline btn-success btn-sm btn-wide">
                     {loading ?
                         <span className="loading loading-dots loading-sm"></span>
                         : "Submit"

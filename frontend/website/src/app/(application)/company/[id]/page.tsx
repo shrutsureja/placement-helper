@@ -31,12 +31,12 @@ function CompanyDetailsPage({ params }: { params: { id: string } }) {
                 <h1 className='text-2xl font-semibold'>{company.companyName}</h1>
                 <p className='text-lg'>{company.description}</p>
                 <p>{company.address}</p>
-                <p>{company.city} - {company.state}</p>
+                <p className='opacity-60'>{company.city} - {company.state}</p>
             </div>
             <div className="flex flex-col gap-2">
-                <div className="flex justify-between items-center border-b border-black pb-2">
+                <div className="flex justify-between items-center bg-black/10 p-2">
                     <span className='text-lg '>Questions</span>
-                    <Link href={`/company/questions-add/${companyId}`} className="btn btn-outline btn-sm">Add Interview Questions</Link>
+                    <Link href={`/company/questions-add/${companyId}`} className="btn btn-outline btn-sm btn-info btn-wide">Add Interview Questions</Link>
                 </div>
             </div>
             <div className="flex flex-col gap-2">
