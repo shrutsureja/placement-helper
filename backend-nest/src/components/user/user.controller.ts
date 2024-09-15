@@ -13,9 +13,9 @@ export class UserController {
 
   @Post('login')
   async login(@Body() createUserDto: CreateUserDto, @Res() reply) {
-    const data =  await this.userService.login(createUserDto);
+    const data = await this.userService.login(createUserDto);
     reply.setCookie('access_token', data.access_token, {});
-    reply.code(200).send();
+    reply.code(200).send({ success: true });
   }
 
   @Get()
