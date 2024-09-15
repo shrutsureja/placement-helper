@@ -28,4 +28,12 @@ export class CompanyService {
       this.logger.log({ err }, 'Error while creating review');
     }
   }
+
+  async getCompanyById(id: string) {
+    try {
+      return await this.companyModel.findById(id);
+    } catch (err) {
+      this.logger.log({ err }, 'Error while creating review');
+    }
+  }
 }
