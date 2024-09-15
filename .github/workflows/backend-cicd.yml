@@ -3,8 +3,8 @@ name: Deploy to custom server
 on:
   push:
     branches: [ "main" ]
-    paths:
-      - 'backend-nest/**'
+    # paths:
+    #   - 'backend-nest/**'
 
 jobs:
   deploy:
@@ -43,3 +43,25 @@ jobs:
         npm install pm2 -g
         pm2 status
         pm2 restart ecosystem.config.js
+    
+    - name: Installing the dependencies
+      run : |
+        cd frontend/website
+        npm ci
+
+    - name: Run build frontend website
+      run: |
+        cd frontend/website
+        npm run build
+        
+    - name: Creating the frontend .env
+      run : |
+        cd frontend/website
+        touch .env
+        echo "${{ secrets.FRONTEND }}" > .env
+    
+    - name: |
+        cd frontend/website
+        npm install pm2 -g
+        pm2 status
+        pm2 restart "npm start"
